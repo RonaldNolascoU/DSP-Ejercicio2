@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function PizzaCustomizer({ onSubmit }) {
-  const [name, setName] = useState('');
-  const [size, setSize] = useState('Personal');
+  const [name, setName] = useState("");
+  const [size, setSize] = useState("Personal");
   const [extraIngredients, setExtraIngredients] = useState(0);
 
   const handleSubmit = (e) => {
@@ -11,16 +11,18 @@ function PizzaCustomizer({ onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4 text-md tracking-tight font-body">
-      <label className="block mb-2">
-        Nombre del cliente:
-      </label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="mt-1 p-2 w-full border border-[#eee]"
-        />
+    <form
+      onSubmit={handleSubmit}
+      className="mb-4 text-md tracking-tight font-body"
+    >
+      <label className="block mb-2">Nombre del cliente:</label>
+      <input
+        type="text"
+        required
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        className="mt-1 p-2 w-full border border-[#eee]"
+      />
 
       <label className="block mb-2">
         Tipo de pizza:
@@ -40,7 +42,11 @@ function PizzaCustomizer({ onSubmit }) {
         <input
           type="number"
           value={extraIngredients}
-          onChange={(e) => setExtraIngredients(Number(e.target.value) < 0 ? 0 : Number(e.target.value))}
+          onChange={(e) =>
+            setExtraIngredients(
+              Number(e.target.value) < 0 ? 0 : Number(e.target.value)
+            )
+          }
           className="mt-1 p-2 w-full border border-[#eee]"
           min={0}
         />
